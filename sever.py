@@ -12,17 +12,14 @@ def hello_world():
 def success():
     return "dojo"
 
-@app.route('/say/<name>')
+@app.route('/say/<string:name>')
 def whats_suh_dude(name):
     print(name)
     return "Hello, " + str(name)
 
-@app.route('/repeat/<somenumber>/<someword>')
+@app.route('/repeat/<int:somenumber>/<string:someword>')
 def repeating(somenumber, someword):
-    output = ''
-    for x in range(0,int(somenumber)):
-        output += f"{someword}"
-    return output
+    return f"{somenumber * someword}"
 
 @app.errorhandler(404)
 def notfoundbrother(e):
